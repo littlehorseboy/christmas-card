@@ -146,5 +146,8 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
+  @media (max-width: 800px) {
+    background-position: unset;
+  }
 }
 </style>
