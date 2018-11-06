@@ -1,7 +1,9 @@
 <template>
   <div class="card">
     <!-- particles.js container -->
-    <div id="particles-js"></div>
+    <div id="particles-js">
+      <TextArea></TextArea>
+    </div>
   </div>
 </template>
 
@@ -10,11 +12,6 @@ import 'particles.js'; /* global particlesJS */
 
 export default {
   name: 'Card',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-    };
-  },
   mounted() {
     particlesJS('particles-js', {
       particles: {
@@ -54,7 +51,7 @@ export default {
           },
         },
         size: {
-          value: 10,
+          value: 8,
           random: true,
           anim: {
             enable: false,
@@ -132,22 +129,32 @@ export default {
     };
     requestAnimationFrame(update);
   },
+  components: {
+    TextArea: () => import('@/components/TextArea'),
+  },
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 /* ---- particles.js container ---- */
-#particles-js {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  // background-image: url("../assets/christmas-3006743_1920.jpg");
-  background-image: url("../assets/christmas-3006743_1920.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
-  @media (max-width: 800px) {
-    background-position: unset;
+  #particles-js {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    // background-image: url("../assets/christmas-3006743_1920.jpg");
+    background-image: url("../assets/christmas-3006743_1920.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    @media (max-width: 800px) {
+      background-position: unset;
+    }
+    >canvas {
+      position: absolute;
+      top: 0;
+    }
   }
-}
 </style>
