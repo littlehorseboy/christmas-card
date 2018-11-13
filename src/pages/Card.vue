@@ -132,7 +132,7 @@ export default {
   },
   components: {
     TextArea: () => import('@/components/TextArea'),
-    Card3D: () => import('@/components/Card'),
+    Card3D: () => import('@/components/Card3D'),
   },
 };
 </script>
