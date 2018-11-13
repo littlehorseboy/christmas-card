@@ -2,7 +2,8 @@
   <div class="card">
     <!-- particles.js container -->
     <div id="particles-js">
-      <TextArea></TextArea>
+      <!-- <TextArea></TextArea> -->
+      <Card3D></Card3D>
     </div>
   </div>
 </template>
@@ -131,6 +132,7 @@ export default {
   },
   components: {
     TextArea: () => import('@/components/TextArea'),
+    Card3D: () => import('@/components/Card'),
   },
 };
 </script>
