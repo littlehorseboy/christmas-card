@@ -76,7 +76,7 @@ export default {
                 opacity: 0.9,
                 scale: {
                   value: 1.1,
-                  duration: 800
+                  duration: 800,
                 },
                 delay: 50,
               });

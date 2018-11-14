@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import 'normalize-scss/sass/normalize/_import-now.scss';
+import 'es6-promise/auto';
 import App from './App';
 import router from './router';
 
