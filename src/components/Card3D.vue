@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-      <div class="gift">
+      <div v-if="chapter === 'three'" class="gift">
         <img ref="gift" :src="require('@/assets/images/c_gift.png')">
       </div>
   </div>
@@ -176,28 +176,27 @@ export default {
         box-sizing: border-box;
       }
     }
-    .paper {
-      position: absolute;
-      height: 360px;
-      width: 400px;
-      background-image: url(../assets/images/d_paper.png);
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      z-index: 1;
-      pointer-events: none;
-      opacity: 0;
-      transform: scale(.1);
-      &__container {
-        padding: 6.5rem;
-      }
+  }
+  .paper {
+    position: absolute;
+    height: 360px;
+    width: 400px;
+    background-image: url(../assets/images/d_paper.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(.1);
+    &__container {
+      padding: 6.5rem;
     }
-    .gift {
-      position: absolute;
-      z-index: 999;
-      >img {
-        cursor: pointer;
-        transform: scale(.1);
-      }
+  }
+  .gift {
+    position: absolute;
+    z-index: 999;
+    >img {
+      cursor: pointer;
     }
   }
 }
