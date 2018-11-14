@@ -2,50 +2,44 @@
   <div class="card3d">
     <div @click="clickCard" class="scene">
       <div class="panel" :class="{ one: chapter === 'one', two: chapter === 'two', top: chapter === 'three' }">
-        <div class="front">
-
-        </div>
-        <div class="back">
-
-        </div>
+        <div class="front"></div>
+        <div class="back"></div>
       </div>
-      <div class="panel" :class="{ one: chapter === 'one', two: chapter === 'two', bottom: chapter === 'three' }">
-
-      </div>
-      <div ref="paper" v-if="chapter === 'three'" class="paper">
-        <div class="paper__container">
-          要填什麼內容，之前說的我忘了
-        </div>
+      <div class="panel" :class="{ one: chapter === 'one', two: chapter === 'two', bottom: chapter === 'three' }"></div>
+    </div>
+    <div ref="paper" v-if="chapter === 'three'" class="paper">
+      <div class="paper__container">
+        要填什麼內容，之前說的我忘了
       </div>
     </div>
-      <div v-if="chapter === 'three'" class="gift">
-        <img ref="gift" :src="require('@/assets/images/c_gift.png')">
-      </div>
+    <div v-if="chapter === 'three'" class="gift">
+      <img ref="gift" :src="require('@/assets/images/c_gift.png')">
+    </div>
   </div>
 </template>
 
 <script>
-import anime from 'animejs';
+import anime from "animejs";
 
 export default {
-  name: 'card3d',
+  name: "card3d",
   data() {
     return {
-      chapter: 'one',
+      chapter: "one"
     };
   },
   methods: {
-    clickCard: function () {
-      if (this.chapter === 'one') {
-        this.chapter = 'two';
-      } else if (this.chapter === 'two') {
-        this.chapter = 'three';
+    clickCard: function() {
+      if (this.chapter === "one") {
+        this.chapter = "two";
+      } else if (this.chapter === "two") {
+        this.chapter = "three";
 
-        this.$nextTick(function () {
+        this.$nextTick(function() {
           anime({
             targets: this.$refs.gift,
             scale: 1.4,
-            delay: 550,
+            delay: 550
           });
 
           const animateButton = (scale, duration, elasticity) => {
@@ -54,7 +48,7 @@ export default {
               targets: this.$refs.gift,
               scale: scale,
               duration: duration,
-              elasticity: elasticity,
+              elasticity: elasticity
             });
           };
 
@@ -67,30 +61,31 @@ export default {
           };
 
           setTimeout(() => {
-            this.$refs.gift.addEventListener('mouseenter', enterButton, false);
-            this.$refs.gift.addEventListener('mouseleave', leaveButton, false);
+            this.$refs.gift.addEventListener("mouseenter", enterButton, false);
+            this.$refs.gift.addEventListener("mouseleave", leaveButton, false);
 
-            this.$refs.gift.addEventListener('click', () => {
+            this.$refs.gift.addEventListener("click", () => {
               anime({
                 targets: this.$refs.paper,
                 opacity: 0.9,
                 scale: {
                   value: 1.1,
-                  duration: 800,
+                  duration: 800
                 },
-                delay: 50,
+                delay: 50
               });
             });
           }, 800);
         });
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .card3d {
+  position: relative;
   z-index: 1;
   .scene {
     position: relative;
@@ -102,7 +97,7 @@ export default {
     height: 380px;
     border: 1px solid #ccc;
 
-    >.panel {
+    > .panel {
       transition: height ease-in-out 1s, transform ease-in-out 1s;
       transform-style: preserve-3d;
       backface-visibility: hidden;
@@ -144,7 +139,7 @@ export default {
         transform-origin: 50% 0%;
         z-index: 1;
 
-        >.front {
+        > .front {
           position: absolute;
           width: 100%;
           height: 100%;
@@ -152,7 +147,7 @@ export default {
           box-sizing: border-box;
         }
 
-        >.back {
+        > .back {
           position: absolute;
           width: 100%;
           height: 100%;
@@ -187,7 +182,7 @@ export default {
     z-index: 1;
     pointer-events: none;
     opacity: 0;
-    transform: scale(.1);
+    transform: scale(0.1);
     &__container {
       padding: 6.5rem;
     }
@@ -195,7 +190,7 @@ export default {
   .gift {
     position: absolute;
     z-index: 999;
-    >img {
+    > img {
       cursor: pointer;
     }
   }
