@@ -41,6 +41,7 @@ export default {
         this.$nextTick(() => {
           anime({
             targets: this.$refs.gift,
+            opacity: 0.9,
             scale: 1.4,
             delay: 550,
           });
@@ -88,7 +89,6 @@ export default {
 
 <style lang="scss" scoped>
 .card3d {
-  position: relative;
   z-index: 1;
   .scene {
     position: relative;
@@ -177,13 +177,12 @@ export default {
     }
   }
   .paper {
-    position: absolute;
     height: 360px;
     width: 400px;
     background-image: url(../assets/images/d_paper.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    z-index: 1;
+    z-index: 999;
     pointer-events: none;
     opacity: 0;
     transform: scale(0.1);
@@ -192,7 +191,7 @@ export default {
     }
   }
   .gift {
-    position: absolute;
+    // opacity: 0;
     z-index: 999;
     > img {
       cursor: pointer;
