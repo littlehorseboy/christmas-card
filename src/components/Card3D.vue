@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-      <div class="gift" v-if="chapter === 'three'">
+      <div class="gift">
         <img ref="gift" :src="require('@/assets/images/c_gift.png')">
       </div>
   </div>
