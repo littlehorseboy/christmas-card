@@ -17,10 +17,10 @@
           要填什麼內容，之前說的我忘了
         </div>
       </div>
+    </div>
       <div class="gift" v-if="chapter === 'three'">
         <img ref="gift" :src="require('@/assets/images/c_gift.png')">
       </div>
-    </div>
   </div>
 </template>
 
@@ -81,7 +81,7 @@ export default {
                 delay: 50,
               });
             });
-          }, 1800);
+          }, 800);
         });
       }
     },
