@@ -193,6 +193,7 @@ export default {
     }
     .gift {
       position: absolute;
+      z-index: 999;
       >img {
         cursor: pointer;
         transform: scale(.1);
