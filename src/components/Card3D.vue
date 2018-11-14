@@ -1,11 +1,14 @@
 <template>
   <div class="card3d">
     <div @click="clickCard" class="scene">
-      <div class="panel" :class="{ one: chapter === 'one', two: chapter === 'two', top: chapter === 'three' }">
+      <div class="panel"
+        :class="{ one: chapter === 'one', two: chapter === 'two', top: chapter === 'three' }">
         <div class="front"></div>
         <div class="back"></div>
       </div>
-      <div class="panel" :class="{ one: chapter === 'one', two: chapter === 'two', bottom: chapter === 'three' }"></div>
+      <div class="panel"
+        :class="{ one: chapter === 'one', two: chapter === 'two', bottom: chapter === 'three' }">
+      </div>
     </div>
     <div ref="paper" v-if="chapter === 'three'" class="paper">
       <div class="paper__container">
@@ -19,36 +22,36 @@
 </template>
 
 <script>
-import anime from "animejs";
+import anime from 'animejs';
 
 export default {
-  name: "card3d",
+  name: 'card3d',
   data() {
     return {
-      chapter: "one"
+      chapter: 'one',
     };
   },
   methods: {
-    clickCard: function() {
-      if (this.chapter === "one") {
-        this.chapter = "two";
-      } else if (this.chapter === "two") {
-        this.chapter = "three";
+    clickCard() {
+      if (this.chapter === 'one') {
+        this.chapter = 'two';
+      } else if (this.chapter === 'two') {
+        this.chapter = 'three';
 
-        this.$nextTick(function() {
+        this.$nextTick(() => {
           anime({
             targets: this.$refs.gift,
             scale: 1.4,
-            delay: 550
+            delay: 550,
           });
 
           const animateButton = (scale, duration, elasticity) => {
             anime.remove(this.$refs.gift);
             anime({
               targets: this.$refs.gift,
-              scale: scale,
-              duration: duration,
-              elasticity: elasticity
+              scale,
+              duration,
+              elasticity,
             });
           };
 
@@ -61,25 +64,25 @@ export default {
           };
 
           setTimeout(() => {
-            this.$refs.gift.addEventListener("mouseenter", enterButton, false);
-            this.$refs.gift.addEventListener("mouseleave", leaveButton, false);
+            this.$refs.gift.addEventListener('mouseenter', enterButton, false);
+            this.$refs.gift.addEventListener('mouseleave', leaveButton, false);
 
-            this.$refs.gift.addEventListener("click", () => {
+            this.$refs.gift.addEventListener('click', () => {
               anime({
                 targets: this.$refs.paper,
                 opacity: 0.9,
                 scale: {
                   value: 1.1,
-                  duration: 800
+                  duration: 800,
                 },
-                delay: 50
+                delay: 50,
               });
             });
           }, 800);
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -96,6 +99,7 @@ export default {
     width: 400px;
     height: 380px;
     border: 1px solid #ccc;
+    z-index: -111;
 
     > .panel {
       transition: height ease-in-out 1s, transform ease-in-out 1s;
