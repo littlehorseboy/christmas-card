@@ -10,12 +10,12 @@
         :class="{ one: chapter === 'one', two: chapter === 'two', bottom: chapter === 'three' }">
       </div>
     </div>
-    <div ref="paper" v-if="chapter === 'three'" class="paper">
+    <div ref="paper" v-show="chapter === 'three'" class="paper">
       <div class="paper__container">
         要填什麼內容，之前說的我忘了
       </div>
     </div>
-    <div v-if="chapter === 'three'" class="gift">
+    <div v-show="chapter === 'three'" class="gift">
       <img ref="gift" :src="require('@/assets/images/c_gift.png')">
     </div>
   </div>
