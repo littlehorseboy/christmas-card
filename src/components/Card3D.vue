@@ -10,77 +10,23 @@
         :class="{ one: chapter === 'one', two: chapter === 'two', bottom: chapter === 'three' }">
       </div>
     </div>
-    <div ref="paper" v-show="chapter === 'three'" class="paper">
-      <div class="paper__container">
-        要填什麼內容，之前說的我忘了
-      </div>
-    </div>
-    <div v-show="chapter === 'three'" class="gift">
-      <img ref="gift" :src="require('@/assets/images/c_gift.png')">
-    </div>
   </div>
 </template>
 
 <script>
-import anime from 'animejs';
-
 export default {
   name: 'card3d',
-  data() {
-    return {
-      chapter: 'one',
-    };
+  computed: {
+    chapter() {
+      return this.$store.getters.getChapter;
+    },
   },
   methods: {
     clickCard() {
       if (this.chapter === 'one') {
-        this.chapter = 'two';
+        this.$store.dispatch('updateCardChapter');
       } else if (this.chapter === 'two') {
-        this.chapter = 'three';
-
-        this.$nextTick(() => {
-          anime({
-            targets: this.$refs.gift,
-            opacity: 0.9,
-            scale: 1.4,
-            delay: 550,
-          });
-
-          const animateButton = (scale, duration, elasticity) => {
-            anime.remove(this.$refs.gift);
-            anime({
-              targets: this.$refs.gift,
-              scale,
-              duration,
-              elasticity,
-            });
-          };
-
-          const enterButton = () => {
-            animateButton(1.4, 800, 400);
-          };
-
-          const leaveButton = () => {
-            animateButton(1.2, 600, 300);
-          };
-
-          setTimeout(() => {
-            this.$refs.gift.addEventListener('mouseenter', enterButton, false);
-            this.$refs.gift.addEventListener('mouseleave', leaveButton, false);
-
-            this.$refs.gift.addEventListener('click', () => {
-              anime({
-                targets: this.$refs.paper,
-                opacity: 0.9,
-                scale: {
-                  value: 1.1,
-                  duration: 800,
-                },
-                delay: 50,
-              });
-            });
-          }, 800);
-        });
+        this.$store.dispatch('updateCardChapter');
       }
     },
   },
@@ -174,27 +120,6 @@ export default {
         border: 5px solid #fff;
         box-sizing: border-box;
       }
-    }
-  }
-  .paper {
-    height: 360px;
-    width: 400px;
-    background-image: url(../assets/images/d_paper.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    z-index: 999;
-    pointer-events: none;
-    opacity: 0;
-    transform: scale(0.1);
-    &__container {
-      padding: 6.5rem;
-    }
-  }
-  .gift {
-    // opacity: 0;
-    z-index: 999;
-    > img {
-      cursor: pointer;
     }
   }
 }
