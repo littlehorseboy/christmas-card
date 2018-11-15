@@ -13,6 +13,7 @@ export default {
 
 <style lang="scss" scoped>
   .textArea {
+    position: absolute;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.7);
     padding-left: 1rem;

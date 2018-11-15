@@ -2,8 +2,8 @@
   <div class="card">
     <!-- particles.js container -->
     <div id="particles-js">
-      <!-- <TextArea></TextArea> -->
       <Card3D></Card3D>
+      <TextArea></TextArea>
     </div>
   </div>
 </template>
