@@ -46,6 +46,10 @@ export default {
     height: 380px;
     border: 1px solid #ccc;
     z-index: -111;
+    // @media (max-width: 500px) {
+    //   width: 280px;
+    //   height: 280px;
+    // }
 
     > .panel {
       transition: height ease-in-out 1s, transform ease-in-out 1s;
