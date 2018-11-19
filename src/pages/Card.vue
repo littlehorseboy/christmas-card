@@ -140,8 +140,6 @@ export default {
 <style lang="scss">
 /* ---- particles.js container ---- */
 .card {
-  min-width: 700px;
-
   #particles-js {
     display: flex;
     justify-content: center;
@@ -150,6 +148,7 @@ export default {
     width: 100%;
     min-width: 700px;
     height: 100%;
+    min-height: 800px;
     background-image: url("../assets/images/background/christmas-3006743_1920.jpg");
     background-repeat: no-repeat;
     background-size: cover;

@@ -30,6 +30,14 @@ export default {
       }
     },
   },
+  mounted() {
+    setTimeout(() => {
+      this.clickCard();
+      setTimeout(() => {
+        this.clickCard();
+      }, 1000);
+    }, 2000);
+  },
 };
 </script>
 
