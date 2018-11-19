@@ -79,7 +79,7 @@ export default {
               targets: this.$refs.santa,
               opacity: 1,
               translateX: 250,
-              duration: 1000,
+              duration: 4000,
             });
 
             santaAnime.complete = () => {
@@ -124,55 +124,57 @@ export default {
                     duration: 800,
                   },
                   delay: 50,
-                });
-
-                anime({
-                  targets: this.$refs.title_merry,
-                  rotate: '2turn',
-                  duration: 2000,
-                });
-
-                anime({
-                  targets: this.$refs.tree01,
-                  scale: 1.2,
-                  duration: 2000,
-                  delay: 350,
                 }).complete = () => {
+                  anime({
+                    targets: this.$refs.title_merry,
+                    rotate: '2turn',
+                    duration: 3000,
+                  });
+
                   anime({
                     targets: this.$refs.tree01,
+                    opacity: 1,
                     scale: 1.2,
-                    translateY: 2,
-                    direction: 'alternate',
-                    loop: true,
-                    delay: 50,
-                  });
-                };
+                    duration: 2000,
+                    delay: 350,
+                  }).complete = () => {
+                    anime({
+                      targets: this.$refs.tree01,
+                      scale: 1.2,
+                      translateY: 2,
+                      direction: 'alternate',
+                      loop: true,
+                      delay: 50,
+                    });
+                  };
 
-                anime({
-                  targets: this.$refs.tree02,
-                  scale: 1.1,
-                  duration: 2200,
-                  delay: 550,
-                }).complete = () => {
                   anime({
                     targets: this.$refs.tree02,
+                    opacity: 1,
                     scale: 1.1,
-                    translateY: 2,
-                    direction: 'alternate',
-                    loop: true,
-                    delay: 80,
-                  });
+                    duration: 2200,
+                    delay: 1000,
+                  }).complete = () => {
+                    anime({
+                      targets: this.$refs.tree02,
+                      scale: 1.1,
+                      translateY: 2,
+                      direction: 'alternate',
+                      loop: true,
+                      delay: 80,
+                    });
+                  };
                 };
               });
 
               this.$refs.gift.click();
-            }, 800);
+            }, 500);
           });
         };
 
         setTimeout(() => {
           showContent();
-        }, 500);
+        }, 800);
       }
     },
   },
@@ -207,11 +209,13 @@ export default {
           position: absolute;
           left: -4rem;
           top: 7rem;
+          opacity: 0;
         }
         &__tree02 {
           position: absolute;
           left: 20rem;
           top: 6rem;
+          opacity: 0;
         }
       }
     }
